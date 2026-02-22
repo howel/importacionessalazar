@@ -28,9 +28,20 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            // 1. NOMBRE DE LA EMPRESA (Sustituye al logo por defecto)
+            //->brandName('Importaciones Salazar')
+
+            // CONFIGURACIÓN DEL LOGO
+            ->brandLogo(asset('logo.png'))
+            ->brandLogoHeight('2.5rem')
+            ->brandName('Importaciones Salazar')
+
+            // 2. COLOR CORPORATIVO (Cambiamos Amber por Red para que combine con Honda)
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Red,
             ])
+            // 3. FAVICON (Opcional: si tienes un icono en public/favicon.ico)
+            // ->favicon(asset('favicon.ico'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([
@@ -39,7 +50,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
                 AccountWidget::class,
-                FilamentInfoWidget::class,
+                // Quitamos FilamentInfoWidget para que no salga publicidad de Filament
             ])
             ->middleware([
                 EncryptCookies::class,

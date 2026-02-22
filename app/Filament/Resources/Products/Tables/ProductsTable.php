@@ -32,7 +32,7 @@ class ProductsTable
                     }),
 
                 TextColumn::make('price')
-                    ->money('USD')
+                    ->money('S/ ')
                     ->sortable(),
 
                 TextColumn::make('cc')
